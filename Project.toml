@@ -1,0 +1,9 @@
+name = "Tropics"
+uuid = "ae022476-3364-475e-8a40-7dc481f7ab72"
+author = "Tristan Abbott <thabbott@mit.edu>"
+version = "0.0.0"
+
+[deps]
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Roots = "f2b01f46-fcfa-551c-844a-d8ac1e96c665"
+Thermodynamics = "3d67bc87-12a1-44a7-8d79-0b60ac653eef"

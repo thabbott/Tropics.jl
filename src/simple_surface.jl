@@ -16,7 +16,7 @@ mutable struct SimpleSurface <: AbstractComponent
 	r_a
 
 	# Planet 
-	planet::Planet
+	planet::Thermodynamics.Planet
 
 end
 
@@ -39,9 +39,9 @@ end
 
 function update_state!(surf::SimpleSurface, lw_down_s, sw_down_s)
 
-	surf.G_T_s.set_tendency!(
+	set_tendency!(surf.G_T_s,
 		(sw_down_s + lw_down_s - sw_up_s - lw_up_s - shf - lhf)
 		/ surf.C_s)
-	surf.T_s = surf.G_T_s.step!()
+	surf.T_s = surf.T_s + step(surf.G_T_s)
 
 end

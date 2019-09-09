@@ -7,7 +7,7 @@ plot(model_time, T_a, color = "blue", label = "\$T_a\$")
 xlabel("Time (days)")
 ylabel("Temperature (K)")
 legend()
-savefig("examples/rce_equilibration/T_s_T_a.pdf")
+savefig("examples/rce_equilibration/T_s_T_a.png")
 
 # TOA energy balance
 figure()
@@ -18,7 +18,7 @@ plot(model_time, sw_net_toa .- lw_up_toa,
 xlabel("Time (days)")
 ylabel("Flux (W m\$^{-2}\$)")
 legend()
-savefig("examples/rce_equilibration/toa_energy_balance.pdf")
+savefig("examples/rce_equilibration/toa_energy_balance.png")
 
 # Surface energy balance
 figure()
@@ -32,4 +32,4 @@ plot(model_time, sw_net_toa .+ lw_down_s .- lw_up_s .- shf .- lhf,
 xlabel("Time (days)")
 ylabel("Flux (W m\$^{-2}\$)")
 legend()
-savefig("examples/rce_equilibration/surface_energy_balance.pdf")
+savefig("examples/rce_equilibration/surface_energy_balance.png")

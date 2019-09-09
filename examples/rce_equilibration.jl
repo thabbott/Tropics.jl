@@ -9,7 +9,7 @@ hour = 3600.
 day = 24hour
 Δt = 6hour
 global t = 0.0
-T = 500day 
+T = 400day 
 
 # ==
 # Create model

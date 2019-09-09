@@ -142,14 +142,21 @@ function rad_sw!(atm::GrayRCEAtmosphere, α_s)
 end
 
 function M_u!(atm::GrayRCEAtmosphere)
+	# Calculate mass flux based on BLQE
 	T_lcl = (
 		atm.T_a * (atm.p_lcl / atm.p_s) ^ 
 		(atm.planet.R_a / atm.planet.c_pa)
-		)
-	atm.M_u = -atm.Q_rad_lcl / (
-			atm.planet.g / atm.planet.c_pa *
-			Thermodynamics.γ(atm.planet, T_lcl, atm.p_lcl)
-		) / atm.ϵ_p
+	)
+	dTdz = (
+		-atm.planet.g / atm.planet.c_pa *
+		Thermodynamics.γ(atm.planet, T_lcl, atm.p_lcl)
+	)
+	S = atm.planet.c_pa * dTdz + atm.planet.g
+	atm.M_u = -atm.Q_rad_lcl / (S * atm.ϵ_p)
+end
+
+function S!(atm::GrayRCEAtmosphere)
+	# Calculate dry static stability just above LCL
 end
 
 function h_b!(atm::GrayRCEAtmosphere, shf, lhf)
